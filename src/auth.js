@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import { loginService } from "./service/auth-service";
+import { loginService } from "./service/loginService";
 
 export const { auth, signOut, signIn } = NextAuth({
   providers: [
@@ -12,6 +12,7 @@ export const { auth, signOut, signIn } = NextAuth({
       authorize: async (credentials) => {
         const { email, password } = credentials;
         const res = await loginService({ email, password });
+        console.log("res=========",res)
         return res;
       },
     }),
@@ -26,6 +27,7 @@ export const { auth, signOut, signIn } = NextAuth({
     },
   },
   strategy: "jwt",
+
   pages: {
     signIn: "/login",
   },

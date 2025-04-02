@@ -5,10 +5,11 @@ import { Label } from "@/components/ui/label";
 import { KeyRound, Mail } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import { loginAction } from "../../../../action/loginAction";
 
 export default function LoginComponent() {
   return (
-    <form className="space-y-6 bg-white">
+    <form action={loginAction} className="space-y-6 bg-white">
       {/* email */}
       <div>
         <Label
@@ -19,7 +20,8 @@ export default function LoginComponent() {
         </Label>
 
         <Input
-          type="text"
+          type="email"
+          name="email"
           placeholder="Please type your email"
           className={`bg-ghost-white py-2.5 px-4 rounded-lg w-full text-light-steel-blue/90`}
         />
@@ -36,6 +38,7 @@ export default function LoginComponent() {
 
         <Input
           type="password"
+          name="password"
           placeholder="Please type your password"
           className={`bg-ghost-white py-2.5 px-4 rounded-lg w-full text-light-steel-blue/90`}
         />
@@ -63,7 +66,7 @@ export default function LoginComponent() {
         </div>
       </div>
 
-      {/* sign in with google */}
+      sign in with google
       <div className=" bg-ghost-white rounded-lg text-center">
         <Button className="flex gap-2 items-start justify-center w-full bg-ghost-white text-charcoal shadow-none hover:bg-ghost-white/50">
           <img src="/Google Icon.svg" alt="google icon" /> Login with google
